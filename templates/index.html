@@ -1,6 +1,26 @@
 <html>
   <head>
+    <!-- 引入 Bootstrap 3-->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+
+    <!-- jQuery library -->
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js" integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/" crossorigin="anonymous"></script>
+
     <title>Grabber</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -10,15 +30,19 @@
     <link rel="shortcut icon" href="public/images/tinyLogo.ico" media="screen" />
     <link href="public/stylesheets/popup.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+
   </head>
   <body>
     <div class="s003">
       <form method="get">
 
-        <!-- Logo -->
+        <!-- Logo Placement-->
         <div class="logo-warp-home">
           <img class="logo_homepage" src="public/images/Logo.JPG" >
         </div>
+
         <div class="inner-form">
           <div class="input-field first-wrap">
             <div class="input-select">
@@ -31,7 +55,7 @@
 
           <!-- Search input -->
           <div class="input-field second-wrap">
-            <input id="search Store id" type="text" placeholder="Enter Store ID to Scrape!" />
+            <input id="search Store id" placeholder="Enter Store ID to Scrape!" />
           </div>
 
           <div class="input-field third-wrap">
@@ -52,8 +76,26 @@
               <div class="popup-content" id="popup-content">
                 <span class="close">&times;</span>
                 <form class="form-container">
-                  <label><b>Pages</b></label>
-                  <input type="number" placeholder="Number of pages" name="pages nums" required>
+                  <div class="numPages-select">
+                    <label id = "instruction-1"><b>Pages of products you wanna grab</b></label>
+                    <label for="input-numPages"></label><input id = "input-numPages" type="number" placeholder="Number of pages" name="pages nums" required>
+                  </div>
+
+                  <div class="SortTypes-select" style="width:100%;" >
+                    <label for="Sort Types" id = "instruction-2"><b>Choose one of Sort Types :</b></label>
+                    <select name="Sort types" id="Sort Types" class="selectpicker" >
+                      <option data-icon="glyphicon glyphicon-eye-open" value="Best Match">Best Match</option>
+                      <option value="Price desc">Price &#xf161;</option>
+                      <option value="Price asc">Price &#xf160;</option>
+                      <option value="New">New</option>
+                      <option value="Orders">Orders &#xf161;</option>
+                    </select>
+                  </div>
+
+                <div class="searchText">
+                  <label id = "instruction-3"><b>Input keyword to scrape specific products</b></label>
+                  <label for="input-searchText"></label><input id = "input-searchText" type="text" placeholder="Keyword" name="search text" required>
+                </div>
 
                   <button type="submit" class="btn-download" id="btn-download"><i class="fa fa-download"></i> Grab!</button>
                 </form>
