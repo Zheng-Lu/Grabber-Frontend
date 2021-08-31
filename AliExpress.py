@@ -4,7 +4,7 @@ import requests
 import random
 from bs4 import BeautifulSoup
 from flask import Flask, render_template
-from flask import request, redirect, url_for
+from flask import request, redirect, url_for, send_file
 
 app = Flask(__name__, template_folder='templates')
 
@@ -16,22 +16,26 @@ def index():
 
 @app.route("/search", methods={"POST", "GET"})
 def search():
-    if request.method == "POST":
-        # Get selected platform from user
-        Platform = request.form.get('Platforms')
-        StoreID = request.form.get('StoreID')
-        numPages = request.form.get('numPages')
-        sortType = request.form.get('sortTypes')
-        return Platform, StoreID, numPages, sortType
-    else:
-        print("Nothing")
-        return None
+    Platform = request.form.get('Platforms')
+    print(Platform)
+    StoreID = request.form.get('StoreID')
+    print(StoreID)
+    numPages = request.form.get('numPages')
+    print(numPages)
+    sortType = request.form.get('sortTypes')
+    print(sortType)
 
+    return Platform, StoreID
+
+
+@app.route("/download", methods={"POST", "GET"})
+def download():
+    path = ""
+    return send_file(path, as_attachment=True)
 
 
 if __name__ == '__main__':
     app.run(debug=True)
-
 
 user_agent_list = [
     'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.1.1 Safari/605.1.15',
